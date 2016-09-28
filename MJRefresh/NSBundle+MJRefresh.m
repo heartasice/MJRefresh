@@ -8,7 +8,7 @@
 
 #import "NSBundle+MJRefresh.h"
 #import "MJRefreshComponent.h"
-
+#import "CLanguageUtil.h"
 @implementation NSBundle (MJRefresh)
 + (instancetype)mj_refreshBundle
 {
@@ -37,9 +37,28 @@
 + (NSString *)mj_localizedStringForKey:(NSString *)key value:(NSString *)value
 {
     static NSBundle *bundle = nil;
+    NSString *language = @"en";
     if (bundle == nil) {
-        // （iOS获取的语言字符串比较不稳定）目前框架只处理en、zh-Hans、zh-Hant三种情况，其他按照系统默认处理
-        NSString *language = [NSLocale preferredLanguages].firstObject;
+        
+        
+        switch ([CLanguageUtil getCurrentLanguage]) {
+            case Language_Default:
+                language = @"en";
+                break;
+            case Language_EN:
+                language = @"en";
+                break;
+            case Language_Hans:
+                language = @"zh-Hans";
+                break;
+            case Language_Hant:
+                language = @"zh-Hant";
+                break;
+
+            default:
+                break;
+        }
+
         if ([language hasPrefix:@"en"]) {
             language = @"en";
         } else if ([language hasPrefix:@"zh"]) {

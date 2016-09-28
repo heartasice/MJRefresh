@@ -1,0 +1,12 @@
+PODS:
+  - Language (1.0.4)
+
+DEPENDENCIES:
+  - Language (~> 1.0.4)
+
+SPEC CHECKSUMS:
+  Language: cbdc173f14ef75965b844b0eca2ff5a34719d97c
+
+PODFILE CHECKSUM: ae9c04cde45be4b7dcd3031e825f1f4c2dfe6773
+
+COCOAPODS: 1.0.1
